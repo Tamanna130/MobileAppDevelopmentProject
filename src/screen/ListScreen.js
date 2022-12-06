@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-const ListScreen = () => {
+const ListScreen = (props) => {
     // console.log(props)
     // const uni_name_1 = 'UIU'
     // const uni_name_2 = 'IUT'
@@ -27,6 +27,8 @@ const ListScreen = () => {
             <Text style={styles.textStyles}>
                 {uni_name_3}
             </Text> */}
+
+            <Text>{console.log(props.item)}</Text>
         </View>
     );
 }
