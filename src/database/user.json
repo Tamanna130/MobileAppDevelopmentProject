@@ -1,7 +1,14 @@
-{
-    "user": {
+[
+    {
         "id": "011201130",
-        "name": "Tamanna Shermin",
-        "password": "123"
+        "username": "Tamanna Shermin",
+        "password": "123",
+        "pic": "E:\\MAAD\\firstApp\\assets\\images.png"
+    },
+    {
+        "id": "0112011302",
+        "username": "Tamanna tiaha",
+        "password": "1234",
+        "pic": "E:\\MAAD\\firstApp\\assets\\dp.png"
     }
-}
+]

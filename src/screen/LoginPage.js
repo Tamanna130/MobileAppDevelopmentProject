@@ -1,45 +1,50 @@
 import React, { useState } from "react";
 import ListScreen from "./ListScreen";
 import { View, Text, StyleSheet, Button, TextInput, Image, TouchableOpacity } from "react-native"
-import user from "../database/user.json"
+import users from "../database/user.json"
+// import info from "../database/info.js"
 function loginPage(props) {
 
-    // console.log(user.user.id);
-    const [values, setValue] = useState([{
+    const [values, setValue] = useState({
         username: "",
         password: "",
         id: ""
-    }]);
-    // if (user.user.id === values[0].id) {
-    //     console.log(user.user.id + "h")
-    // }
-    //  const info = values.map((item) => {
-    //     return(
-    //         <ListScreen userInfo = {item}></ListScreen>
-    //     );
-    //  })
+    });
+
+    const submitHandler = () => {
+        const user = users.filter((user) => (user.password == values.password))
+        const [userinfo] = user;
+        if (userinfo === undefined)
+            alert("Wrong id or or username password")
+        else
+            props.navigation.navigate("Home", userinfo)
+    }
     return (
         <View style={styles.containerStyle}>
             <View style={styles.ViewStyle}>
-                <Image style={styles.imageStyle} source={require('../../assets/images.png')} />
+                <Image style={styles.imageStyle} source={require('E:\\MAAD\\firstApp\\assets\\images.png')} />
             </View>
             {/* {console.log(values[0].username)}
             {console.log(values[0].password)} */}
-            <TextInput placeholder="id" value={values[0].id} onChangeText={(e) => { setValue([{ ...values[0], id: e }]) }} style={styles.inputStyle} />
-            <TextInput placeholder="Username" value={values[0].username} onChangeText={(e) => { setValue([{ ...values[0], username: e }]) }} style={styles.inputStyle} />
-            <TextInput placeholder="Password" value={values[0].password} onChangeText={(e) => { setValue([{ ...values[0], password: e }]) }} style={styles.inputStyle} />
+            <TextInput placeholder="id" value={values.id} onChangeText={(e) => { setValue({ ...values, id: e }) }} style={styles.inputStyle} />
+            <TextInput placeholder="Username" value={values.username} onChangeText={(e) => { setValue({ ...values, username: e }) }} style={styles.inputStyle} />
+            <TextInput placeholder="Password" value={values.password} onChangeText={(e) => { setValue({ ...values, password: e }) }} style={styles.inputStyle} />
             <View style={styles.buttonStyle}>
                 {/* <Button style={styles.buttonBorderStyle} title="Login"></Button> */}
             </View>
             <TouchableOpacity
                 style={styles.button}
                 // onPress={this.onPress}
-                onPress={() => {
-                    if (user.user.id !== values[0].id) {
-                        alert("wrong id");
-                    }
-                    else { props.navigation.navigate("Home"); }
-                }}
+                onPress={
+                    submitHandler
+                    // props.navigation.navigate("Home");
+
+                    // else {
+
+                    //     props.navigation.navigate("Home", { usernm: "tisha" });
+                    // }
+
+                }
             >
                 <Text> Touch Here </Text>
             </TouchableOpacity>

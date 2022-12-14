@@ -2,11 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import user from "../database/user.json"
 const homePage = (props) => {
-    console.log(props)
-    const unis = [{ name: 'UIU', id: 1 }, { name: 'IUT', id: 2 }, { name: 'BUET', id: 3 }]
+console.log(infolist);
     return (
         <View style={styles.containerStyle}>
-            <Text>{props}</Text>
+            <Text>{infolist}</Text>
         </View>
     );
 }
